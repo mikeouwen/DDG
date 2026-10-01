@@ -1,5 +1,6 @@
 <!-- omit from toc -->
 # Dijkstra Dungeon Generator (DDG) 
+
 <div>
   <img src="readmeimages/exampleMap.png" alt="A dungeon map generated using DDG" width="49%">
   <img src="readmeimages/Animation.gif" alt="Animation of the Process" width="49%">
@@ -55,13 +56,14 @@ Run ``uv run dungeonGenerator.py`` to run DDG. The produced ``generatedMap.png``
 - **A** Generate a random weight between (1,100) inclusive and assign the weight to the edge connecting two adjacent nodes (*note: diagonal nodes are not considered as adjacent*). Repeat this process until all edge between adjacent nodes are assigned a random weight. The weight equals the cost to travel from one node to one of its neighbor node.
 
 - **(2)** <div><img src="readmeimages/edge_weight_map.png" alt="edge weight map" width="100%"></div>
-The result edge weight map generated. Numbers on edges denote their weight. The higher the weight, the warmer the color and the thicker the edge.
+  
+  The result edge weight map generated. Numbers on edges denote their weight. The higher the weight, the warmer the color and the thicker the edge.
 
 - **B** Select the start node on the map. Run Dijkstra's algorithm with the weight generated in **(1)**. Start node are always randomly selected on the left edge of the map. This is to make sure the dungeon has an proper entrance.
 
 - **(3)** 
   <div><img src="readmeimages/cost_map.png" alt="cell cost map" width="100%"></div>
-  
+
   The result cell cost map from **B**. It has 50x50 cells. The number on the cell means the minimum cost to travel from the start node (start cell) to that cell (Dijkstra always find the minimum cost path). So the start node will always have 0 and the coolest color on it. The warmer the color, the higher the cost. This map tells you the minimum cost to travel to any cell on the map from the start node.
 
 - **C** Now pick one node randomly on the right edge of the map as the end node, which also acts as the exit of the dungeon. DDG will trace the minimum path from the start node to the end node.
@@ -71,12 +73,11 @@ The result edge weight map generated. Numbers on edges denote their weight. The 
 - **D** Now we are back at generating random weights again. With a new random weights. The path between the same two start and end nodes will be different. So you can repeat this cycle as much as you want to generate many organic paths with their start and end postion under control.
 
 - **E** This particular DDG generates 9 paths by randomly select three nodes on the left edge and 3 nodes on the right edge and find the minimum cost path between any two of them with new random weights every time. The node counts and the node selected are controlled by ``left_edge_nodes``, ``right_edge_nodes``, ``left_edge_node_counts`` and ``right_edge_node_counts``.
-  
+
 - **(5)** 
   <div><img src="readmeimages/exampleMap.png" alt="example_map" width="100%"></div>
-  We still need to place the treasures, monsters and items on the map. There will always be treasure boxes placed at the left and right edge of the map to reward player exploration. When they find out that their exploration of a path leads to a dead end they should always be rewarded by something instead of being punished by having nothing. The Yahaha! design in the game *The Legend of Zelda: Breath of the Wild* is a great example of this design principle: player's laborious endeavor to climb an interesting looking mountain will almost always be rewarded by a Yahaha! at the top of the mountain. We need that in the dunegon too :)
   
-  other monsters and items are place within a specified area centerd on the map. The area is controlled by ``delta_x`` and ``delta_y``.
+  We still need to place the treasures, monsters and items on the map. There will always be treasure boxes placed at the left and right edge of the map to reward player exploration. When they find out that their exploration of a path leads to a dead end they should always be rewarded by something instead of being punished by having nothing. The Yahaha! design in the game *The Legend of Zelda: Breath of the Wild* is a great example of this design principle: player's laborious endeavor to climb an interesting looking mountain will almost always be rewarded by a Yahaha! at the top of the mountain. We need that in the dunegon too :) Other monsters and items are place within a specified area centerd on the map. The area is controlled by ``delta_x`` and ``delta_y``.
 
 **Having fun playing the generator!**
   
