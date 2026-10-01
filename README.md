@@ -30,8 +30,8 @@ This project is managed using ``uv``. [``uv``](https://docs.astral.sh/uv/) is an
  Clone the repo and change your working directory into the cloned repo.
 
 ```bash
-git clone https://github.com/your-username/evolvedungeon.git
-cd evolvedungeon
+git clone https://github.com/mikeouwen/DDG.git
+cd DDG
 ```
 
 ### 3. Install dependencies
