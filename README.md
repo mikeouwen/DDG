@@ -2,6 +2,7 @@
 # Dijkstra Dungeon Generator (DDG) 
 ![A dungeon map generated using DDG](/readmeimages/exampleMap.png)
 
+![Animation of the Process](/readmeimages/Animation.gif)
 Dijkstra dungeon generator is a level generator that uses Dijkstra's algorithm with random weights to procedurally generate dungeon maps.
 
 <!-- omit from toc -->
@@ -47,7 +48,7 @@ Run ``uv run dungeonGenerator.py`` to run DDG. The produced ``generatedMap.png``
 ![overview](/readmeimages/Overview.png
 )
 
-- **(1)** The representation of a dungeon in DDG is a **graph**. DDG first generate a graph of 50x50 nodes. The number of nodes is controlled by variables ``grid_size_x`` and ``grid_size_y``. A node actually represents a cell with certain area in the final generated map. But we don't care about the size of the cell only how they are connnected when representing the map as graphs so cells are simplified as nodes with no area.
+- **(1)** The representation of a dungeon in DDG is a **graph**. DDG first generate a graph of 50x50 nodes. The number of nodes is controlled by variables ``grid_size_x`` and ``grid_size_y``. A node actually represents a cell with certain area in the final generated map. But when representing the map as graphs we don't care about the size of the cell only how they are connnected so cells are simplified as nodes with no area.
 
 - **A** Generate a random weight between (1,100) inclusive and assign the weight to the edge connecting two adjacent nodes (*note: diagonal nodes are not considered as adjacent*). Repeat this process until all edge between adjacent nodes are assigned a random weight. The weight equals the cost to travel from one node to one of its neighbor node.
 
