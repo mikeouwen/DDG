@@ -1,0 +1,10 @@
+[project]
+name = "DijkstraDungeonGenerator"
+version = "0.1.0"
+description = "A dungeon generator using Dijkstra's algorithm with random weights"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib>=3.11.2",
+    "pillow>=12.3.0",
+]
