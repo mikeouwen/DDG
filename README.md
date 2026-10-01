@@ -60,7 +60,8 @@ The result edge weight map generated. Numbers on edges denote their weight. The 
 - **B** Select the start node on the map. Run Dijkstra's algorithm with the weight generated in **(1)**. Start node are always randomly selected on the left edge of the map. This is to make sure the dungeon has an proper entrance.
 
 - **(3)** 
-  <div><img src="readmeimages/cost_map.png" alt="cell cost map" width="100%"></div> 
+  <div><img src="readmeimages/cost_map.png" alt="cell cost map" width="100%"></div>
+  
   The result cell cost map from **B**. It has 50x50 cells. The number on the cell means the minimum cost to travel from the start node (start cell) to that cell (Dijkstra always find the minimum cost path). So the start node will always have 0 and the coolest color on it. The warmer the color, the higher the cost. This map tells you the minimum cost to travel to any cell on the map from the start node.
 
 - **C** Now pick one node randomly on the right edge of the map as the end node, which also acts as the exit of the dungeon. DDG will trace the minimum path from the start node to the end node.
