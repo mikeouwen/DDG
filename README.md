@@ -6,7 +6,7 @@
   <img src="readmeimages/Animation.gif" alt="Animation of the Process" width="49%">
 </div>
 
-A dungeon generator using Dijkstra's algorithm (pronounced /ˈdaɪkstrə/）with random weights to generate organic pathways with controllable start and end positions.
+A dungeon generator using Dijkstra's algorithm (pronounced /ˈdaɪkstrə/）with random weights to generate organic pathways with controllable start and end positions. (unlike random walk)
 
 <!-- omit from toc -->
 ## Table of Content
