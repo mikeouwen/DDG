@@ -30,6 +30,11 @@ tile_size_x = 16
 tile_size_y = 16
 
 
+# specify the folder for helper images
+helper_images_dir = Path("HelperImages")
+helper_images_dir.mkdir(exist_ok=True)
+
+
 def initializeWeight(index):
     # generate a random weight matrix
     # weight matrix of horizontal edges
@@ -219,7 +224,7 @@ def drawPath(image, path, index):
         y = node[1] * tile_size_y
         image.paste(path_tile, (x, y))
 
-    image.save(f"Path_{index}.png")
+    image.save(helper_images_dir / f"Path_{index}.png")
 
 
 def drawCostMap(costs, index):
@@ -270,7 +275,9 @@ def drawCostMap(costs, index):
     ax.invert_yaxis()
 
     # Save
-    plt.savefig(f"cell_cost_map_{index}.png", dpi=300, bbox_inches="tight")
+    plt.savefig(
+        helper_images_dir / f"cell_cost_map_{index}.png", dpi=300, bbox_inches="tight"
+    )
 
 
 # drawWeightMap
@@ -338,7 +345,7 @@ def drawWeightMap(horizontal_weight, vertical_weight, index):
     ax.set_yticks([])
 
     plt.tight_layout()
-    plt.savefig(f"edge_weight_map_{index}.png", dpi=200)
+    plt.savefig(helper_images_dir / f"edge_weight_map_{index}.png", dpi=200)
 
 
 # output map
