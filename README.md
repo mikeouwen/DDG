@@ -44,7 +44,7 @@ Run ```uv sync``` in the project folder to install dependencies.
 
 ### 4. Run the generator script
 
-Run ``uv run dungeonGenerator.py`` to run DDG. The produced ``generatedMap.png`` image file is the result generated map.
+Run ``uv run dungeonGenerator.py`` to run DDG. The produced ``generatedMap.png`` image file is the result generated map. All helper images (edge weight map, cell cost map, and path maps) are stored in ``HelperImages`` folder.
 
 ## How DDG works (and how to tweak it)
 
