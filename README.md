@@ -44,22 +44,22 @@ Run ```uv sync``` in the project folder to install dependencies.
 
 ### 4. Run the generator script
 
-Run ``uv run dungeonGenerator.py`` to run DDG. The produced ``generatedMap.png`` image file is the result generated map. All helper images (edge weight map, cell cost map, and path maps) are stored in ``HelperImages`` folder.
+Run ``uv run dungeonGenerator.py`` to run DDG. The produced ``generatedMap.png`` image file is the  generated dungeon map. All helper images (edge weight map, cell cost map, and path maps) are stored in ``HelperImages`` folder.
 
 ## How DDG works (and how to tweak it)
 
 ![overview](/readmeimages/Overview.png
 )
 
-- **(1)** The representation of a dungeon in DDG is a **graph**. DDG first generate a graph of 50x50 nodes. The number of nodes is controlled by variables ``grid_size_x`` and ``grid_size_y``. A node actually represents a cell with certain area in the final generated map. But when representing the map as graphs we don't care about the size of the cell only how they are connnected so cells are simplified as nodes with no area.
+- **(1)** The representation of a dungeon in DDG is a **graph**. DDG first generate a graph of 50x50 nodes. The number of nodes on horizontal and vertical dimensions are controlled respectively by variables ``grid_size_x`` and ``grid_size_y``. A node here actually represents a cell with certain area in the final generated map. But when representing the map as graphs we don't care about the size of the cell only how they are connnected so cells are simplified as nodes with no size.
 
-- **A** Generate a random weight between (1,100) inclusive and assign the weight to the edge connecting two adjacent nodes (*note: diagonal nodes are not considered as adjacent*). Repeat this process until all edge between adjacent nodes are assigned a random weight. The weight equals the cost to travel from one node to one of its neighbor node.
+- **A** Generate a random weight as an integer between (1,100) inclusive and assign the weight to the edge connecting two adjacent nodes (*note: diagonal nodes are not considered adjacent*). Repeat this process until all edge between adjacent nodes are assigned a random weight. The weight is the cost to travel from one node to one of its neighbor node.
 
 - **(2)** <div><img src="readmeimages/edge_weight_map.png" alt="edge weight map" width="100%"></div>
   
   The result edge weight map generated. Numbers on edges denote their weight. The higher the weight, the warmer the color and the thicker the edge.
 
-- **B** Select the start node on the map. Run Dijkstra's algorithm with the weight generated in **(1)**. Start node are always randomly selected on the left edge of the map. This is to make sure the dungeon has an proper entrance.
+- **B** Select the start node on the map. Run Dijkstra's algorithm with the weight generated in **(1)**. Start node are always randomly selected on the left edge of the map. This is to make sure the dungeon has an proper entrance on the left of the map.
 
 - **(3)** 
   <div><img src="readmeimages/cost_map.png" alt="cell cost map" width="100%"></div>
@@ -68,9 +68,9 @@ Run ``uv run dungeonGenerator.py`` to run DDG. The produced ``generatedMap.png``
 
 - **C** Now pick one node randomly on the right edge of the map as the end node, which also acts as the exit of the dungeon. DDG will trace the minimum path from the start node to the end node.
   
-- **(4)** The generated path.Notice that it's not a straight line but a winding path. This is because Dijkstra always find the path with the least cost and when the cost map is random, The least cost path will accordingly has a random zigzag movement pattern but also connecting the start and the end nodes. This is what we want: you pick where you want the entrance and the exit of the map. DDG will take care of the rest and make the path look organic. **And we just finished one cycle of generating a path.**
+- **(4)** The generated path. Notice that it's not a straight line but a winding path. This is because Dijkstra always find the path with the least cost and when the cost map is random, The least cost path will also has a random zigzag movement pattern accordingly while making sure the start and the end nodes are connected. **This is what we want: you pick where you want the entrance and the exit of the map. DDG will take care of the rest and make the path look organic. And we just finished one cycle of generating a path.**
 
-- **D** Now we are back at generating random weights again. With a new random weights. The path between the same two start and end nodes will be different. So you can repeat this cycle as much as you want to generate many organic paths with their start and end postion under control.
+- **D** Now we are back at generating random weights again. With a new random weight map, the path between the same start and end nodes will be different. So you can repeat this cycle as much as you want to generate many different organic paths with their start and end postion under control.
 
 - **E** This particular DDG generates 9 paths by randomly select three nodes on the left edge and 3 nodes on the right edge and find the minimum cost path between any two of them with new random weights every time. The node counts and the node selected are controlled by ``left_edge_nodes``, ``right_edge_nodes``, ``left_edge_node_counts`` and ``right_edge_node_counts``.
 
