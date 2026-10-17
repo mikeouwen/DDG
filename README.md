@@ -77,7 +77,15 @@ Run ``uv run dungeonGenerator.py`` to run DDG. The produced ``generatedMap.png``
 - **(5)** 
   <div><img src="readmeimages/exampleMap.png" alt="example_map" width="100%"></div>
   
-  We still need to place the entrance, the exit, treasures, monsters and items on the map. The entrance and the exit will also be placed at the start and the end cell of the first generated path just for simplicity. ![start](/images/start.png) marks the entrance and ![end](/images/end.png) marks the exit.  **There will always be treasure boxes placed at the left and right edge of the map to reward player exploration. When they find out that their exploration of a path leads to a dead end they should always be rewarded by something instead of being punished by having nothing. The Yahaha! design in the game *The Legend of Zelda: Breath of the Wild* is a great example of this design principle: player's laborious endeavor to climb an interesting looking mountain will almost always be rewarded by a Yahaha! at the top of the mountain. We need that in the dunegon too :)** Other monsters and items are place within a specified area centerd on the map. The area is controlled by ``delta_x`` and ``delta_y``.
+  We still need to place the entrance, the exit, treasures, monsters and items on the map. The entrance and the exit will also be placed at the start and the end cell of the first generated path just for simplicity. <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./images/start.png">
+  <source media="(prefers-color-scheme: light)" srcset="./images/start_light.png">
+  <img alt="Start" src="./images/start.png">
+</picture> marks the entrance and <picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./images/end.png">
+  <source media="(prefers-color-scheme: light)" srcset="./images/end_light.png">
+  <img alt="End" src="./images/end.png">
+</picture> marks the exit.  **There will always be treasure boxes placed at the left and right edge of the map to reward player exploration. When they find out that their exploration of a path leads to a dead end they should always be rewarded by something instead of being punished by having nothing. The Yahaha! design in the game *The Legend of Zelda: Breath of the Wild* is a great example of this design principle: player's laborious endeavor to climb an interesting looking mountain will almost always be rewarded by a Yahaha! at the top of the mountain. We need that in the dunegon too :)** Other monsters and items are place within a specified area centerd on the map. The area is controlled by ``delta_x`` and ``delta_y``.
 
 **Having fun playing the generator!**
   
